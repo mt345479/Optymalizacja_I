@@ -1,65 +1,9 @@
-# WIERZCHOŁKI
-Powyższy program realizuje optymalizację algorytmu w postaci kanonicznej metodą przeglądania wszystkich wierzchołków.
+# GRAF
 
-Należy zadeklarować znormalizowany układ oraz funkcję celu zadające badany problem.
-Dla przykładu układ z zadania:
+Rozwiązanie problemu dualnego do danego w zadaniu 1 (które ten program również rozwiązuje) wskazuje na wierzchołki jednej z grup w grafie dwudzielnym, gdyż poprzez takie warunki nałożone na krawędzie (nawet z pominiętymi wagami) tworzymy coś w rodzaju bijekcji między tymi grupami wierzchołków, zatem z punktu widzenia danej grupy wszystko to, co "widzą" wierzchołki w niej zawarte to zbiór wszystkich krawędzi całego grafu. Gdyby te grupy nie były równoliczne, to ów algorytm wskazałby mniejsząz nich, co z oczywistych względów jest optymalnym pokryciem, którego szukamy. Wartość funkcji celu mojego programu to minus liczba wierzchołków w mniejszej z grup grafu (bądź liczba krawędzi w grafie po qnałożeniu na nie warunków zadania pierwszego z tego labu).
 
-========================================================
+Program jest pod linkiem https://cocalc.com/projects/ac1be6fd-371e-444c-94f2-6bb5ee05dddd/files/graph.sagews
+ale wykrzacza się wyświetlanie, więc polecam wziąć kod i uruchomić tu: https://sagecell.sagemath.org/ (mniejsze limity na output)
 
-    octave:1> A = [-1 1 1 0 0 ; 1 0 0 1 0 ; 0 1 0 0 1]
-    A =
-
-      -1   1   1   0   0
-       1   0   0   1   0
-       0   1   0   0   1
-
-    octave:2> b = [1;3;2]
-    b =
-
-       1
-       3
-       2
-    octave:3> F = @(x)(x(1)+x(2))
-    F =
-
-    @(x) (x (1) + x (2))
-
-========================================================
-
-Następnie wywołujemy funkcję:
-
-========================================================
-
-    octave:4> wierzcholki(A, b, F)
-    uklad_lewa_str =
-
-      -1   1   1   0   0
-       1   0   0   1   0
-       0   1   0   0   1
-
-    uklad_prawa_str =
-
-       1
-       3
-       2
-
-    maksymalny_wierzcholek =
-
-      -1   1   1
-       1   0   0
-       0   1   0
-
-    maksymalny_wektor_ =
-
-       3
-       2
-       2
-       0
-       0
-
-    F_max =  5
-========================================================
-
-Program można wygodnie wywołać online np. na stronie:
-
-http://octave-online.net/ (po zalogowaniu przez konto Google)
+Program zawiera liczbę n
+aby rozwiązywał "całe" zadanie pierwsze i trzecie powinna ona wynosić 7 (wymiar macierzy incydencji grafu z polecenia). Ja ją zmniejszyłem (wziąłem minor główny tej macierzy o wym 3x3), bo się wszystko strasznie długo liczyło i mało było widać. ;-)
