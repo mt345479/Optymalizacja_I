@@ -200,7 +200,20 @@ def smallest_coefficient_leaving(self):
  #############################################
     #######################################
     
+N = (5)
     
+nazwa = (["leksykograficzny, maximum",
+          "LARGEST COEFFICIENT",
+          "LARGEST INCREASE",
+          "SMALLEST INCREASE",
+          "STEEPEST EDGE",
+          "MOST GRADUAL EDGE",
+          "BLAND'D RULE",
+          "RANDOM EDGE",
+          "SMALLEST COEFFICIENT"])
+
+show (nazwa[N])
+
 def PIVOT_ENTERING(self):
     return ([lexicographical_max_entering(self),
              largest_coefficient_entering(self),
@@ -220,10 +233,10 @@ def PIVOT_LEAVING(self):
              blandd_leaving(self)])
     
 def my_entering(self):
-    return PIVOT_ENTERING(self)[5]
+    return PIVOT_ENTERING(self)[N]
 
 def my_leaving(self):
-    return PIVOT_LEAVING(self)[5]
+    return PIVOT_LEAVING(self)[N]
 
 #
 # Definicja problemu
