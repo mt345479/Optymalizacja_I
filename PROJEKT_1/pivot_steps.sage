@@ -793,6 +793,25 @@ PROBLEM_nazwa = (["Transporting_Problem",
 ##                                           ##
  #############################################
     #######################################
+    
+
+def PIVOT_ENTERING(self):
+    return ([lexicographical_max_entering(self),
+             largest_coefficient_entering(self),
+             largest_increase_entering(self),
+             smallest_increase_entering(self),
+             steepest_edge_entering(self),
+             gradual_edge_entering(self),
+             blandd_entering(self)])
+
+def PIVOT_LEAVING(self):
+    return ([lexicographical_max_leaving(self),
+             largest_coefficient_leaving(self),
+             largest_increase_leaving(self),
+             smallest_increase_leaving(self),
+             steepest_edge_leaving(self),
+             gradual_edge_leaving(self),
+             blandd_leaving(self)])
 
 PIVOT_nazwa = (["leksykograficzny (maximum)",
           "LARGEST COEFFICIENT",
@@ -809,24 +828,6 @@ for M in range(9):
     
     for N in range(7):
         print "\n\n                  ", PIVOT_nazwa[N], "\n"
-
-        def PIVOT_ENTERING(self):
-            return ([lexicographical_max_entering(self),
-                     largest_coefficient_entering(self),
-                     largest_increase_entering(self),
-                     smallest_increase_entering(self),
-                     steepest_edge_entering(self),
-                     gradual_edge_entering(self),
-                     blandd_entering(self)])
-
-        def PIVOT_LEAVING(self):
-            return ([lexicographical_max_leaving(self),
-                     largest_coefficient_leaving(self),
-                     largest_increase_leaving(self),
-                     smallest_increase_leaving(self),
-                     steepest_edge_leaving(self),
-                     gradual_edge_leaving(self),
-                     blandd_leaving(self)])
 
         def my_entering(self):
             return PIVOT_ENTERING(self)[N]
