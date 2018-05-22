@@ -1,10 +1,13 @@
 e=[4,6,1,2,5,1,2,3,1,6,5,4,5,4,1,2,1,6,3,2,6,5,2,1,2,3,1,6,3,4,1,2,3,4,1,6,4,1,5,3,5,4,6,2,5,6,4,1,5,6,2,3,6,2,5,4,3,4,2,5,5,3,1,6];
-d=[4,1,2,5,1,6,5,4,1,2,3,4,5,3,4,2]
+f=[2,5,4,6,3,2,1,6,5,3,4,2,4,1,2,3,2,3,4,6,4,1,6,5,3,4,1,6,2,3,5,6,5,3,1,6]
+g=[4,1,2,5,1,6,5,4,1,2,3,4,5,3,4,2]
+
+d=f
 
 p = MixedIntegerLinearProgram()
 x = p.new_variable(binary=True)
 
-n = 4
+n = 9
 
 p.set_objective(sum(x[i] for i in range(16*n*n))) #funkcja celu
 
@@ -42,7 +45,16 @@ for i in range(sqrt(n)-1):
 p.add_constraint( (sum(d[k]*x[1 + 4*(sqrt(n)-2) + 4*sqrt(n)*(sqrt(n)-1) + 4*n*k] for k in range(4*n))) == (sum(d[k]*x[3 + 4*(sqrt(n)-1) + 4*sqrt(n)*(sqrt(n)-1) + 4*n*k] for k in range(4*n))) )
 p.add_constraint( (sum(d[k]*x[2 + 4*(sqrt(n)-1) + 4*sqrt(n)*(sqrt(n)-2) + 4*n*k] for k in range(4*n))) == (sum(d[k]*x[0 + 4*(sqrt(n)-1) + 4*sqrt(n)*(sqrt(n)-1) + 4*n*k] for k in range(4*n))) )       
 
+M=matrix(16*n*n,1)
+
 show(p.solve());
 for i, v in p.get_values(x).iteritems():
-    if(v == 1): print('x_%s = %s' % (i, int(round(v))))
-p.show();
+    M[i,0]=v
+#    if(v == 1): print('x_%s = %s' % (i, int(round(v))))
+
+N=matrix(4*n,4*n)
+for i in range(4*n):
+    for j in range(4*n):
+        N[i,j]=M[4*n*i+j,0]
+#show(N)
+show(vector(d)*N)
