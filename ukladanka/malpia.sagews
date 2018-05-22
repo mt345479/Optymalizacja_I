@@ -32,9 +32,9 @@ for i in range(4): # cała macierz jest permutacją bloków
     p.add_constraint(sum(sum(x[k + 16*j + 64*i] for k in range(16)) for j in range(4)) ==4) # jednka w każdym wierszu
     p.add_constraint(sum(sum(x[j + 16*k + 4*i] for k in range(16)) for j in range(4)) ==4) # jednka w każdej kolumnie
 
-#p.add_constraint((sum(d[j]*x[2 + 16*j] for j in range(16))) == (sum(d[j]*x[8 + 16*j] for j in range(16))))
-#p.add_constraint((sum(d[j]*x[7 + 16*j] for j in range(16))) == (sum(d[j]*x[13 + 16*j] for j in range(16))))
-#p.add_constraint((sum(d[j]*x[10 + 16*j] for j in range(16)) == (sum(d[j]*x[16 + 16*j] for j in range(16))))
-#p.add_constraint((sum(d[j]*x[3 + 16*j] for j in range(16))) == (sum(d[j]*x[9 + 16*j] for j in range(16))))
+p.add_constraint((sum(d[j]*x[2 + 16*j] for j in range(16))) == (sum(d[j]*x[8 + 16*j] for j in range(16))))
+p.add_constraint((sum(d[j]*x[7 + 16*j] for j in range(16))) == (sum(d[j]*x[13 + 16*j] for j in range(16))))
+p.add_constraint((sum(d[j]*x[10 + 16*j] for j in range(16))) == (sum(d[j]*x[16 + 16*j] for j in range(16))))
+p.add_constraint((sum(d[j]*x[3 + 16*j] for j in range(16))) == (sum(d[j]*x[9 + 16*j] for j in range(16))))
 
 show(p.solve()); p.get_values(x); p.show()
