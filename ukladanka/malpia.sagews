@@ -5,7 +5,7 @@ x = p.new_variable(binary=True)
 
 n=4
 
-p.set_objective(sum(x[1]) #funkcja celu
+p.set_objective(sum(x[i] for i in range(n*n))) #funkcja celu
 
 # MACIERZ PERMUTACJI I OBROTÓW KLOCKÓW
 
